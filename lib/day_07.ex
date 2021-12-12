@@ -13,6 +13,19 @@ defmodule Aoc2021.Day07 do
     |> Enum.sum()
   end
 
+  def part2(input) do
+    size = Enum.count(input)
+
+    average =
+      input
+      |> Enum.sum()
+      |> div(size)
+
+    input
+    |> Enum.map(&Enum.sum(1..abs(&1 - average)))
+    |> Enum.sum()
+  end
+
   defp median(size) when rem(size, 2) == 0, do: div(size, 2)
   defp median(size), do: div(size + 1, 2)
 end
